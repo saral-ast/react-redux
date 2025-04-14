@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
+import { addTodo } from "../features/todo/todoSlice";
 
 const TodoInput = () => {
   const [input, setInput] = useState("");
@@ -11,20 +12,26 @@ const TodoInput = () => {
 
   const handleSubmit = (e) => {
       e.preventDefault();
-      addTodo()
-      setInput("");
-  }
-  const addTodo = () => {
-  
-      dispatch({
-        type: "todos/addedTodo",
-        payload: {
+      dispatch(addTodo({
           id: Date.now(),
           item: input,
           completed: false,
-        },
-      });
+      }))
+      setInput("");
   }
+  // const addTodo = () => {
+  
+  //     dispatch({
+  //       type: "todos/addedTodo",
+  //       payload: {
+  //         id: Date.now(),
+  //         item: input,
+  //         completed: false,
+  //       },
+  //     });
+  // }
+  //redux toolkit
+ 
 
   return (
     <form

@@ -1,20 +1,29 @@
 import React from "react";
 import { useDispatch } from "react-redux";
+import { completeTodo, deleteTodo } from "../features/todo/todoSlice";
 
 const TodoItem = ({ todo }) => {
   // console.log('Todo:',todo )
   const dispatch = useDispatch();
+  // const onCompleteTodo = () => {
+  //   dispatch({
+  //     type: "todos/completedTodo",
+  //     payload: todo.id,
+  //   });
+  // };
+  // const onDeleteTodo = () => {
+  //   dispatch({
+  //     type: "todos/deletedTodo",
+  //     payload: todo.id,
+  //   });
+  // };
+
+  //toolkit
   const onCompleteTodo = () => {
-    dispatch({
-      type: "todos/completedTodo",
-      payload: todo.id,
-    });
+    dispatch(completeTodo(todo.id));
   };
   const onDeleteTodo = () => {
-    dispatch({
-      type: "todos/deletedTodo",
-      payload: todo.id,
-    });
+    dispatch(deleteTodo(todo.id));
   };
   return (
     <div className="border-2 border-yellow-400 p-4 rounded mt-4 w-full max-w-2xl mx-auto bg-[#0d3b66] text-white">
