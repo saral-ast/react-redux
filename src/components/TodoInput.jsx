@@ -12,6 +12,7 @@ const TodoInput = () => {
 
   const handleSubmit = (e) => {
       e.preventDefault();
+      if (!input) return;
       dispatch(addTodo({
           id: Date.now(),
           item: input,
